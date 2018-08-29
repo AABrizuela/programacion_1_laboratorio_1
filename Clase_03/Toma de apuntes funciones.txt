@@ -1,0 +1,114 @@
+
+ Las funciones responden 3 preguntas:
+
+ -Que hace?
+ -Que retorna?
+ -Que recibe?
+
+ EJ:
+
+ int main()
+ {
+
+    ___;
+    ___;
+    ___;
+
+    return 0;
+
+ }
+
+ Esta funcion retorna un entero.
+
+ Lo que recibe va entre los parentesis de la funcion.
+
+ Si en este caso retorna otra cosa distinta a 0
+ es porque hay un error.
+
+ "int main()" se conoce como firma (o en ingles, signature)de la funcion.
+
+ "printf()", "scanf()", "system()" son funciones.
+
+ EJ:
+
+ -Que hace scanf?
+ Scanea un dato ingresado.
+
+ -Que recibe?
+ Recibe 2 parametros.
+
+ "scanf("%d", &valor);"
+
+ Recibe la mascara y la variable.
+
+ -Que retorna?
+ Datos ingresados por el usuario.
+
+ --------------------
+
+ Una funcion no es mas que un modulo.
+
+ --------------
+
+ char valor;
+
+ valor = getch();
+ valor = getche();
+
+ Estas funciones esperan un caracter y no necesitan que presione enter.
+
+ La diferencia es que si quiero que la tecla se vea o no,
+ "getche()" me muestra la letra y "getch()" no. No llevan parametros.
+
+ Para usar estas 2 funciones hay que usar la biblioteca:
+
+ #include <conio.h>
+
+ ---------------
+
+ Funcion suma:
+
+ -Que hace? Suma 2 operandos.
+ -Que retorna? Resultado.
+ -Que recibe? 2 operandos.
+
+ >>Ver proyecto "Funcion Suma"<<
+
+ ---------------
+
+ "&" representa la direccion de memoria de una variable.
+ Cuando se llama a una funcion se detiene la funcion main.
+
+----------------------
+
+Un indentificador puede ser:
+
+-Variable
+-Constante
+-Funcion
+
+Puede tener hasta 32 caracteres y tiene que empezar con letra o con guion bajo.
+No puede tener caracteres especiales.
+
+----------------------
+
+Parametros formales y parametros actuales:
+
+Un parametro es lo que va entre parentesis de una funcion.
+En el prototipo y en el cuerpo de funcion los parametros son formales.
+Cuando llamo a la funcion los parametros son actuales.
+
+----------------------
+
+Visibilidad de variables locales y globales (Scope)
+
+Si se trabaja con variables globales hacen que el programa sea inseguro.
+Tiene validez la local frente a la global.
+
+---------------------
+
+"*" es para asignar una variable como puntero.
+
+Si trabajo con transpaso por valor va a generar copias.
+Si trabajo con transpaso por referencia va a modificar la funcion main.
+
