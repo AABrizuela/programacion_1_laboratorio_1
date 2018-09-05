@@ -1,0 +1,184 @@
+Array/Arreglo
+
+int nro; //variable declarada de tipo entero
+
+nro = 5;
+
+en algun lugar de la memoria voy a tener asignado ese valor
+
+nro = 7
+
+se reemplaza el 5 por un 7
+
+si la variable es de tipo "int nro;" solo guarda un valor.
+Array me permite guardar mas de un tipo de valor en una misma variable.
+
+int nros[5]; //variable de tipo entero con la cantidad de elementos que va a contener (5)
+
+En memoria se le asigna el espacio necesario para contener 5 enteros.
+El primer elemento de un array siempre es 0.
+A traves del indice se accede al array.
+
+nros[0] = 3;
+nros[2] = 7;
+
+Como ingresar datos al array:
+
+printf("Ingrese: ");
+scanf("%d", &nros[1]);
+
+Como mostrar datos de un array:
+
+printf("%d", nros[1]);
+
+Un array es una variable de tipo de dato cuya particularidad es
+que va a tener una dimension y en esa dimension va a contener
+"k" cantidad de elementos. Y ese "k" elementos voy a declararlo
+en la varialbe al definir el array.
+
+tipodato miArray[k];
+
+va a contener desde 0 hasta k-1;
+
+Hay que tener criterio hasta donde acceder en un array para no generar desbordamiento de memoria.
+
+Carga secuencial:
+
+#define CANT 50 <- define el valor del array
+
+int main()
+{
+
+    int legajo[CANT]; <- CANT = 50
+    float salario[CANT]; <- CANT = 50
+
+    int i;
+
+    for(i = 0, i < CANT, i++)
+    {
+
+        printf("Legajo: ");
+        scanf("%d", &legajo[i]);
+        printf("Salario: ");
+        scanf("%f", &salario[i]);
+
+    }
+
+    for(i = 0, i < CANT, i++)
+    {
+
+        printf("Legajo: %d\t Salario:%.2f\n", legajo[i], salario[i]);
+
+    }
+}
+
+Que signifca esto? Que se va a cargar desde el primero hasta el ultimo, sin poder saltearse ningun elemento.
+Y el sistema va a estar bloqueado esperando a que sigas cargando mas datos.
+Informacion son datos procesados.
+
+Carga aleatoria:
+
+Cargo la posicion, cargo el dato.
+
+Carga secuencial mezclada con aleatoria:
+
+#define CANT 50
+
+int main()
+{
+
+    int legajo[CANT], i, isEmpty[CANT];
+    float salario[CANT];
+
+    for(i = 0, i < CANT, i++) <- A todos los elementos del array le asigna 1
+    {
+
+        isEmpty[i] = 1;
+
+    }
+
+    for(i = 0, i < CANT, i++)
+    {
+
+        if(isEmpty[i] == 1)
+        {
+
+            printf("Legajo: ");
+            scanf("%d", &legajo[i]);
+            printf("Salario: ");
+            scanf("%f", &salario[i]);
+            isEmpty[i] = 0;
+            break;
+
+        }
+
+    }
+
+    return 0;
+
+}
+
+
+
+Puede pertenecer a un caso en un switch.
+
+----------------------------------
+
+Busqueda y ordenamiento de vectores:
+
+-Busqueda:
+
+#define CANT 1000
+
+int main()
+{
+
+    int legajo[CANT], legajoAux, flag = 0;
+
+
+    printf("Ingrese legajo a buscar: ");
+    scanf("%d", &legajoAux);
+
+    //se usa un "for" para buscar datos
+    for(i = 0, i < CANT, i++)
+    {
+
+        if(legajoAux == legajo[i])
+        {
+
+            printf("Dato encontrado.");
+            flag = 1;
+            break;
+
+        }
+
+    }
+
+    //en caso de no encontrarlo para mostrar se usa bandera.
+    if(flag == 0)
+    {
+
+        printf("No encontrado");
+
+    }
+
+}
+
+Ordenamiento:
+
+Metodo de burbujeo:
+
+Me paro en el primer elemento y lo comparo con el segundo.
+Si es mayor lo intercambio usando un auxiliar (variable simple).
+
+Si el primero es mayor que el segundo guardo el mayor en el auxiliar y guardo
+el segundo en el lugar del primero.
+
+Se ordena con 2 for:
+
+for(i = 0, i < CANT - 1, i++)
+{
+
+
+
+}
