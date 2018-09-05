@@ -174,11 +174,23 @@ Si es mayor lo intercambio usando un auxiliar (variable simple).
 Si el primero es mayor que el segundo guardo el mayor en el auxiliar y guardo
 el segundo en el lugar del primero.
 
-Se ordena con 2 for:
+Se ordena con 2 "for" y 1 "if":
 
 for(i = 0, i < CANT - 1, i++)
 {
 
+    for(i = i + 1, i < CANT, j++)
+    {
 
+        if(legajo[i] > legajo[j])
+        {
+
+            aux = legajo[i];
+            legajo[i] = legajo[j];
+            legajo[j] = aux
+
+        }
+
+    }
 
 }
