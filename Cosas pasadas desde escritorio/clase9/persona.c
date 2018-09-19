@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include "persona.h"
 
 
@@ -8,7 +9,8 @@
 void init(EPersona lista[], int len)
 {
     int i;
-    for(i=0; i<len; i++){
+    for(i=0; i<len; i++)
+    {
         lista[i].isEmpty = 1;
     }
 }
@@ -18,8 +20,10 @@ int obtenerEspacioLibre(EPersona lista[], int len)
     int i;
     int retorno = -1;
 
-    for(i=0; i<len; i++){
-        if(lista[i].isEmpty == 1){
+    for(i=0; i<len; i++)
+    {
+        if(lista[i].isEmpty == 1)
+        {
             retorno = i;
             break;
         }
@@ -35,7 +39,7 @@ void alta(EPersona lista[], int len)
     index = obtenerEspacioLibre(lista, len);
 
     if(index != -1)
-        {
+    {
         printf("Apellido: ");
         fflush(stdin);
         gets(lista[index].apellido);
@@ -56,9 +60,11 @@ void alta(EPersona lista[], int len)
         scanf("%d", &lista[index].feNac.anio);
 
         lista[index].isEmpty = 0;
-        }else{
+    }
+    else
+    {
         //no hay espacio libre
-        }
+    }
     return;
 }
 
@@ -76,7 +82,8 @@ void ordenar(EPersona lista[], int len)
                 auxPersona = lista[i];
                 lista[i] = lista[j];
                 lista[j] = auxPersona;
-            }else if(strcmp(lista[i].apellido, lista[j].apellido) ==0 && strcmp(lista[i].nombre, lista[j].nombre) > 0)
+            }
+            else if(strcmp(lista[i].apellido, lista[j].apellido) ==0 && strcmp(lista[i].nombre, lista[j].nombre) > 0)
             {
                 auxPersona = lista[i];
                 lista[i] = lista[j];
@@ -105,8 +112,10 @@ int eliminar(EPersona lista[], int len)
     int i;
     int retorno = -1;
 
-    for(i=0; i<len; i++){
-        if(lista[i].isEmpty == 1){
+    for(i=0; i<len; i++)
+    {
+        if(lista[i].isEmpty == 1)
+        {
             retorno = i;
             break;
         }
@@ -124,21 +133,35 @@ void modificar(EPersona lista[], int len)
     printf("Ingrese DNI de la persona a MODIFICAR.");
     scanf("%ld", &auxiliarDni);
 
+    //index = buscarPorDni(van los parametros);
     for(i=0; i<len; i++)
     {
+        //if(encontrado != -1)
         if(auxiliarDni == index)
         {
             printf("%s %s\t%ld\t%d/%d/%d\n\n", lista[index].apellido, lista[index].nombre, lista[index].dni, lista[index].feNac.dia, lista[index].feNac.mes, lista[index].feNac.anio);
-            printf("Desea MODIFICAR este elemento?");
-            do{
-                printf("1- Modificar APELLIDO.\n");
-                printf("2- Modificar NOMBRE\n");
-                printf("3- Modificar DNI\n");
-                printf("4- Modificar FECHA DE NACIMIENTO\n\n");
-                printf("5- Volver\n");
 
-                switch(opcionModificar)
+            do
+            {
+                printf("Desea MODIFICAR este elemento S|N?");
+                fflush(stdin);
+                scanf("%c", &rta);
+                rta = tolower(rta);
+            }
+            while(rta != 'n' && rta != 's');
+
+            if(rta == 's')
+            {
+                do
                 {
+                    printf("1- Modificar APELLIDO.\n");
+                    printf("2- Modificar NOMBRE\n");
+                    printf("3- Modificar DNI\n");
+                    printf("4- Modificar FECHA DE NACIMIENTO\n\n");
+                    printf("5- Volver\n");
+
+                    switch(opcionModificar)
+                    {
                     case 1:
                         printf("Ingrese nuevo apellido: ");
                         gets(lista[i].apellido);
@@ -171,9 +194,19 @@ void modificar(EPersona lista[], int len)
                     case 5:
                         //volver al menu anterior
                         break;
-
+                    default:
+                        printf("Opcion incorrecta...");
+                    }
                 }
-            }while(opcionModificar!=5);
+                while(opcionModificar!=5);
+            }
+            else{
+                printf("No se modificaron los datos...");
+            }
+
+        }
+        else{
+            printf("Dato inexistente...")
         }
     }
 }
