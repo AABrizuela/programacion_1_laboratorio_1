@@ -1,0 +1,37 @@
+# depslib dependency file v1.0
+1537319507 source:d:\dfernandez\clase9\main.c
+	<stdio.h>
+	<stdlib.h>
+	"persona.h"
+
+1537359419 d:\dfernandez\clase9\persona.h
+
+1537319989 source:d:\dfernandez\clase9\persona.c
+	"persona.h"
+
+1537364119 source:d:\brizuela.adrian\programacion_1_laboratorio_1-master\cosas pasadas desde escritorio\clase9\main.c
+	<stdio.h>
+	<stdlib.h>
+	"persona.h"
+
+1537363857 d:\brizuela.adrian\programacion_1_laboratorio_1-master\cosas pasadas desde escritorio\clase9\persona.h
+
+1537365916 source:d:\brizuela.adrian\programacion_1_laboratorio_1-master\cosas pasadas desde escritorio\clase9\persona.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"persona.h"
+
+1537369608 source:d:\brizuela.adrian\clase9\main.c
+	<stdio.h>
+	<stdlib.h>
+	"persona.h"
+
+1537368805 d:\brizuela.adrian\clase9\persona.h
+
+1537367331 source:d:\brizuela.adrian\clase9\persona.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"persona.h"
+
