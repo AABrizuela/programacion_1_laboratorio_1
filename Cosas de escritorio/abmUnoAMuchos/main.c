@@ -18,10 +18,25 @@ typedef struct{
     char descripcion[20];
 }eSector;
 
+typedef struct
+{
+    int id;
+    int descripcion[20];
+}eComida;
+
+typedef struct
+{
+    int id;
+    int idEmpleado;
+    int idComida;
+}eAlmuerzo;
+
+
+
 void inicializarEmpleados( eEmpleado x[], int tam);
 int buscarLibre( eEmpleado x[], int tam);
 int buscarEmpleado(eEmpleado x[], int tam, int legajo);
-void mostrarEmpleado(eEmpleado emp, eSector sectores[]);
+void mostrarEmpleado(eEmpleado emp[], eSector sectores[], eComida comidas[]);
 void mostrarEmpleados(eEmpleado nomina[], int tam, eSector sectores[], int tamSector);
 void agregarEmpleado(eEmpleado empleados[], int tam, eSector sectores[], int tamSector);
 void eliminarEmpleado(eEmpleado *empleados, int tam, eSector sectores[], int tamSector);
@@ -29,6 +44,7 @@ void modificarEmpleado(eEmpleado empleados[], int tam, eSector sectores[], int t
 int elegirSector(eSector sectores[], int tam);
 void cargarDescripcion(eSector sectores[], int tamSector, int idSector, char cadena[]);
 void listarEmpleadosXSector(eEmpleado empleados[], int tam, eSector sectores[], int tamSector);
+void cargarDescripcionComida(eSector comidas[], int tamComida, int idComida, char cadena[]);
 int menu();
 
 int main()
@@ -42,6 +58,41 @@ int main()
         {3, "Compras"},
         {4, "Contable"},
         {5, "Sistemas"}
+        };
+
+    eComida comidas[] = {
+        {1, "Milanesa"},
+        {2, "Fideos"},
+        {3, "Pizza"},
+        {4, "Sopa"},
+        {5, "Pescado"}
+        };
+
+    eAlmuerzo almuerzos[] = {
+        {100, 1111, 2},
+        {101, 5555, 1},
+        {102, 4545, 3},
+        {103, 3232, 4},
+        {104, 1111, 1},
+        {105, 5555, 5},
+        {106, 4545, 2},
+        {107, 3232, 5},
+        {108, 1111, 2},
+        {109, 5555, 1},
+        {110, 4545, 1},
+        {111, 3232, 4},
+        {112, 1111, 3},
+        {113, 5555, 5},
+        {114, 4545, 4},
+        {115, 3232, 5},
+        {116, 1111, 2},
+        {117, 5555, 5},
+        {118, 4545, 2},
+        {119, 3232, 3},
+        {120, 1111, 2},
+        {121, 5555, 1},
+        {122, 4545, 3},
+        {123, 3232, 4},
         };
 
     inicializarEmpleados(lista, 10);
@@ -67,7 +118,7 @@ int main()
             system("pause");
             break;
         case 5:
-//            listarEmpleadosXSector(lista, 10, sectores, 5);
+            mostrarAlmuerzos();
             break;
         case 10:
             seguir = 'n';
@@ -135,7 +186,8 @@ int menu()
     printf("3- Modificar\n");
     printf("4- Listar\n");
     printf("5- Listar todos los empleados de un sector");
-    printf("6- Salir\n");
+    printf("6- Mostrar almuerzos");
+    printf("10- Salir\n");
     printf("Ingrese opcion: ");
     fflush(stdin);
     scanf("%d", &opcion);
@@ -195,7 +247,7 @@ void agregarEmpleado(eEmpleado empleados[], int tam, eSector sectores[], int tam
 }
 
 //eEmpleado emp, char descripcion[]
-void mostrarEmpleado(eEmpleado emp, eSector sectores[])
+void mostrarEmpleado(eEmpleado emp[], eSector sectores[], eComida comidas[])
 {
     char descripcion[20];
 
@@ -312,8 +364,19 @@ void cargarDescripcion(eSector sectores[], int tamSector, int idSector, char cad
             break;
         }
     }
+}
 
+void cargarDescripcionComida(eSector comidas[], int tamComida, int idComida, char cadena[])
+{
+    int i=0;
 
+    for(i=0; i < tamComida; i++){
+        if( comidas[i].id == idComida){
+
+            strcpy(cadena, comidas[i].descripcion);
+            break;
+        }
+    }
 }
 
 void listarEmpleadosXSector(eEmpleado x[], int tam, eSector sectores[], int tamSector)
