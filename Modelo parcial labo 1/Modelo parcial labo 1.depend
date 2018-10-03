@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1538569439 source:d:\brizuela.adrian\programacion_1_laboratorio_1-master\modelo parcial labo 1\almuerzo.c
+
+1538569456 source:d:\brizuela.adrian\programacion_1_laboratorio_1-master\modelo parcial labo 1\comida.c
+
+1538580473 source:d:\brizuela.adrian\programacion_1_laboratorio_1-master\modelo parcial labo 1\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"empleado.h"
+
+1538568715 source:d:\brizuela.adrian\programacion_1_laboratorio_1-master\modelo parcial labo 1\utn.c
+
+1538577425 source:d:\brizuela.adrian\programacion_1_laboratorio_1-master\modelo parcial labo 1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"empleado.h"
+	"comida.h"
+	"almuerzo.h"
+
+1538578121 d:\brizuela.adrian\programacion_1_laboratorio_1-master\modelo parcial labo 1\empleado.h
+
+1538572557 d:\brizuela.adrian\programacion_1_laboratorio_1-master\modelo parcial labo 1\comida.h
+
+1538572719 d:\brizuela.adrian\programacion_1_laboratorio_1-master\modelo parcial labo 1\almuerzo.h
+
