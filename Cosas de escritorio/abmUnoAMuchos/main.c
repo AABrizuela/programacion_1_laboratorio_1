@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <conio.h>
+/* #include <conio.h> */
+#include <curses.h>
+
+// const int empleadosMax=10; <<<< RUNTIME 
+#define maxEmpleados 10   /// <<<< PRECOMPILER
+#define maxSectores 5
 
 typedef struct
 {
@@ -21,7 +26,7 @@ typedef struct{
 typedef struct
 {
     int id;
-    int descripcion[20];
+    char descripcion[20];
 }eComida;
 
 typedef struct
@@ -32,11 +37,10 @@ typedef struct
 }eAlmuerzo;
 
 
-
 void inicializarEmpleados( eEmpleado x[], int tam);
 int buscarLibre( eEmpleado x[], int tam);
 int buscarEmpleado(eEmpleado x[], int tam, int legajo);
-void mostrarEmpleado(eEmpleado emp[], eSector sectores[], eComida comidas[]);
+void mostrarEmpleado(eEmpleado emp, eSector sectores[], int tamSector);
 void mostrarEmpleados(eEmpleado nomina[], int tam, eSector sectores[], int tamSector);
 void agregarEmpleado(eEmpleado empleados[], int tam, eSector sectores[], int tamSector);
 void eliminarEmpleado(eEmpleado *empleados, int tam, eSector sectores[], int tamSector);
@@ -104,21 +108,22 @@ int main()
         {
 
         case 1:
-            agregarEmpleado(lista, 10, sectores, 5);
+            agregarEmpleado(lista, maxEmpleados, sectores, 5);
             system("pause");
             break;
         case 2:
-            eliminarEmpleado(lista, 10, sectores, 5);
+            eliminarEmpleado(lista, maxEmpleados, sectores, 5);
             break;
         case 3:
-            modificarEmpleado(lista, 10, sectores, 5);
+            modificarEmpleado(lista, maxEmpleados, sectores, 5);
             break;
         case 4:
-            mostrarEmpleados(lista, 10, sectores, 5);
+            mostrarEmpleados(lista, maxEmpleados, sectores, 5);
             system("pause");
             break;
         case 5:
-            mostrarAlmuerzos();
+            // mostrarAlmuerzos();
+	    printf("No hice mostrarAlmuerzos, hacerla");
             break;
         case 10:
             seguir = 'n';
@@ -218,7 +223,7 @@ void agregarEmpleado(eEmpleado empleados[], int tam, eSector sectores[], int tam
         if(esta != -1)
         {
             printf("Existe un empleado con el legajo %d\n", legajo);
-            mostrarEmpleado( empleados[esta], sectores);
+            mostrarEmpleado( empleados[esta], sectores, maxSectores);
         }
         else{
             nuevoEmpleado.legajo = legajo;
@@ -247,7 +252,7 @@ void agregarEmpleado(eEmpleado empleados[], int tam, eSector sectores[], int tam
 }
 
 //eEmpleado emp, char descripcion[]
-void mostrarEmpleado(eEmpleado emp[], eSector sectores[], eComida comidas[])
+void mostrarEmpleado(eEmpleado emp, eSector sectores[], int tamSector)
 {
     char descripcion[20];
 
@@ -384,22 +389,24 @@ void listarEmpleadosXSector(eEmpleado x[], int tam, eSector sectores[], int tamS
     int auxSector=0, i=0, j=0, flag=0, idSector;
     char descripcion[20];
 
-    printf("Ingrese sector: ");
-    scanf("%d", &auxSector);
-
-    //idSector = cargarDescripcion(sectores, tamSector, emp.idSector, descripcion);
-
-    for(i=0; i<tamSector; i++)
+    // Muestro menu de sectores.
+    printf("Elija un sector a mostrar:");
+    for(i=0; i < tamSector; i++)
     {
-        for(j=0; i<tam; j++)
-        {
-            if(auxSector == sectores[i].id )
-            {
-                mostrarEmpleado(x[j], sectores[i].descripcion);
-                //x[j], sectores[i].descripcion
-                flag = 1;
-            }
-        }
+	    printf("%d - %s", sectores[i].id, sectores[i].descripcion);
+    }
+    // Pido q elija un sector y veo que sea valido
+    scanf("%d", &auxSector);
+    /*Validar sector*/
+
+    // Muestro los empleados del sector ingresado
+    for (i=0; i <  tam;i++)
+    {
+	if(auxSector == x[i].idSector)
+	{
+		mostrarEmpleado(x[i], sectores, tamSector);
+		flag = 1;
+	}
     }
 
     if(flag == 0)
