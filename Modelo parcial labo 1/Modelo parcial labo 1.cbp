@@ -31,22 +31,16 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="almuerzo.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="almuerzo.h" />
-		<Unit filename="comida.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="comida.h" />
-		<Unit filename="empleado.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="empleado.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="subMenus.h" />
+		<Unit filename="menuPrincipal.h" />
+		<Unit filename="negocio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="negocio.h" />
 		<Unit filename="utn.c">
 			<Option compilerVar="CC" />
 		</Unit>

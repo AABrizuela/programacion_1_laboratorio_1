@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "empleado.h"
+#include "utn.h"
 
 void empeladoMenu()
 {
@@ -44,7 +45,7 @@ void empeladoMenu()
                 break;
 
             case 3:
-                printf("Estamos trabajando para usted.");
+                modificarEmpleado(listaEmpleados, LEN, listaSector, SECTORLEN);
                 break;
 
             case 4:
@@ -63,14 +64,14 @@ void empeladoMenu()
     }while(opcionSubMenu!=5);
 }
 
-void inicializarEmpleados( eEmpleado x[], int tam)
+void inicializarEmpleados(eEmpleado listaEmpleados[], int tam)
 {
-    int i=0;
+	int i=0;
 
-    for(i=0; i < tam; i++)
-    {
-        x[i].isEmpty = 0;
-    }
+	for(i=0; i < tam; i++)
+	{
+		listaEmpleados[i].isEmpty = 0;
+	}
 }
 
 int buscarLibre( eEmpleado x[], int tam)
@@ -95,8 +96,6 @@ int buscarEmpleado(eEmpleado x[], int tam, int legajo)
 
     for(i=0; i < tam; i++)
     {
-
-
         if( x[i].legajo == legajo && x[i].isEmpty == 1)
         {
             indice = i;
@@ -106,7 +105,8 @@ int buscarEmpleado(eEmpleado x[], int tam, int legajo)
     return indice;
 }
 
-void cargarDescripcion(eSector sectores[], int tamSector, int idSector, char cadena[]){
+void cargarDescripcion(eSector sectores[], int tamSector, int idSector, char cadena[])
+{
     int i=0;
 
     for(i=0; i < tamSector; i++){
@@ -118,69 +118,87 @@ void cargarDescripcion(eSector sectores[], int tamSector, int idSector, char cad
     }
 }
 
-int elegirSector(eSector sectores[], int tam){
-    int idSector, i=0;
-    printf("\nSectores\n\n");
-    for(i=0; i < tam; i++){
-        printf("%d %s\n", sectores[i].id, sectores[i].descripcion);
-    }
-    printf("\nSeleccione sector: ");
-    scanf("%d", &idSector);
+int elegirSector(eSector sectores[], int tam)
+{
+	int idSector, i=0;
 
-    return idSector;
+	printf("\nSectores\n\n");
+
+	for(i=0; i < tam; i++)
+	{
+		printf("%d %s\n", sectores[i].id, sectores[i].descripcion);
+	}
+
+	idSector = getValidInt("Seleccione sector: ", "Error, ingrese un valor numerico.", 1, 5);
+
+	return idSector;
 }
 
 void agregarEmpleado(eEmpleado empleados[], int tam, eSector sectores[], int tamSector)
 {
-    eEmpleado nuevoEmpleado;
-    int indice;
-    int esta;
-    int legajo;
+	eEmpleado nuevoEmpleado;
+	int indice;
+	int esta;
+	int legajo;
 
-    indice = buscarLibre(empleados, tam);
+	indice = buscarLibre(empleados, tam);
 
-    if(indice == -1)
-    {
-        printf("No hay lugar\n\n");
-    }
-    else
-    {
-        printf("Ingrese legajo: ");
-        scanf("%d", &legajo);
+	if(indice == -1)
+	{
+		printf("No hay lugar\n\n");
+	}
+	else
+	{
+		printf("Ingrese legajo: ");
+		scanf("%d", &legajo);
 
-        esta = buscarEmpleado(empleados, tam, legajo);
+		esta = buscarEmpleado(empleados, tam, legajo);
 
-        if(esta != -1)
-        {
-            printf("Existe un empleado con el legajo %d\n", legajo);
-            mostrarEmpleado( empleados[esta], sectores, SECTORLEN);
-        }
-        else{
-            nuevoEmpleado.legajo = legajo;
+		if(esta != -1)
+		{
+			printf("Existe un empleado con el legajo %d\n", legajo);
+			mostrarEmpleado( empleados[esta], sectores, SECTORLEN);
+		}
+		else{
+			nuevoEmpleado.legajo = legajo;
 
-            printf("Ingrese apellido: ");
-            fflush(stdin);
-            gets(nuevoEmpleado.apellido);
+			getValidString("Ingrese apellido: ", "Error, ingrese apellido.", nuevoEmpleado.apellido);
 
-            printf("Ingrese nombre: ");
-            fflush(stdin);
-            gets(nuevoEmpleado.nombre);
+			/*printf("Ingrese apellido: ");
+			fflush(stdin);
+			gets(nuevoEmpleado.apellido);*/
 
-            printf("Ingrese sexo: ");
-            fflush(stdin);
-            scanf("%c", &nuevoEmpleado.sexo);
+			getValidString("Ingrese nombre: ", "Error, ingrese nombre.", nuevoEmpleado.nombre);
 
-            printf("Ingrese sueldo: ");
-            fflush(stdin);
-            scanf("%f", &nuevoEmpleado.sueldo);
+			/*printf("Ingrese nombre: ");
+			fflush(stdin);
+			gets(nuevoEmpleado.nombre);*/
 
-            nuevoEmpleado.idSector = elegirSector(sectores, 5);
 
-            nuevoEmpleado.isEmpty = 1;
 
-            empleados[indice] = nuevoEmpleado;
-        }
-    }
+			printf("Ingrese sexo: ");
+			scanf("%c", &nuevoEmpleado.sexo);
+			fflush(stdin);
+			while(nuevoEmpleado.sexo != 'm' && nuevoEmpleado.sexo != 'f')
+			{
+				printf("Error, ingrese f o m: ");
+				scanf("%c", &nuevoEmpleado.sexo);
+				fflush(stdin);
+			}
+
+			nuevoEmpleado.sueldo = getValidFloat("Ingrese sueldo: ", "Error, ingrese valor numerico: ", 1, 999999);
+
+			/*printf("Ingrese sueldo: ");
+			fflush(stdin);
+			scanf("%f", &nuevoEmpleado.sueldo);*/
+
+			nuevoEmpleado.idSector = elegirSector(sectores, 5);
+
+			nuevoEmpleado.isEmpty = 1;
+
+			empleados[indice] = nuevoEmpleado;
+		   }
+	    }
 }
 
 void mostrarEmpleado(eEmpleado emp, eSector sectores[], int tamSector)
@@ -189,7 +207,7 @@ void mostrarEmpleado(eEmpleado emp, eSector sectores[], int tamSector)
 
     cargarDescripcion(sectores, tamSector, emp.idSector, descripcion);
 
-    printf("%d %s %s %c %.2f %s \n\n", emp.legajo, emp.apellido, emp.nombre, emp.sexo, emp.sueldo, descripcion);
+    printf("%d\t%s\t%s\t%c\t%.2f\t%s\n\n", emp.legajo, emp.apellido, emp.nombre, emp.sexo, emp.sueldo, descripcion);
 
 }
 
@@ -237,4 +255,61 @@ else{
     system("pause");
 }
 
+}
+
+void modificarEmpleado(eEmpleado empleados[], int tam, eSector sectores[], int tamSector)
+{
+
+	int opcionMenuMod;
+	char edit;
+	char nuevoNombre[51];
+	char nuevoApellido[51];
+	float nuevoSalario;
+	int nuevoSector;
+	int indice;
+	int legajo;
+
+	legajo = getValidInt("Ingrese legajo de empleado a modificar: ", "Error, fuera de rango.", 1, 5);
+	indice = buscarEmpleado(empleados, tam, legajo);
+
+	do
+	{
+		system("cls");
+		printf("*** Empleado a modificar ***\n\n");
+
+		printf("LEGAJO\t APELLIDO\t NOMBRE\t SEXO\t SUELDO\t SECTOR\n1");
+		mostrarEmpleado(empleados[indice], sectores, tamSector);
+
+		printf("*** Menu de MODIFICACIONES ***\n\n");
+		printf("1.- Modificar apellido.\n");
+		printf("2.- Modificar nombre.\n");
+		printf("3.- Modificar salario.\n");
+		printf("4.- Modificar sector.\n");
+		printf("5.- Salir.\n\n");
+
+		printf("Elija opcion: ");
+		scanf("%d", &opcionMenuMod);
+
+		switch(opcionMenuMod)
+		{
+			case 1:
+				printf("\nModifica apellido? s/n ");
+				fflush(stdin);
+				scanf("%c", &edit);
+				if(edit!='s')
+				{
+					printf("Modificacion cancelada.\n\n");
+				}
+				else
+				{
+					getValidString("Ingrese NUEVO apellido: ", "Error, reingrese.", nuevoApellido);
+					strcpy(empleados[indice].apellido, nuevoApellido);
+					printf("Se ha modificado el apellido con exito\n\n");
+				}
+
+				system("pause");
+				break;
+
+		}
+	}while(opcionMenuMod!=5);
 }

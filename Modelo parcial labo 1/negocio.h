@@ -1,8 +1,10 @@
-#ifndef EMPLEADO_H_INCLUDED
-#define EMPLEADO_H_INCLUDED
+#ifndef NEGOCIO_H_INCLUDED
+#define NEGOCIO_H_INCLUDED
 
 #define LEN 100
 #define SECTORLEN 5
+#define TRUE 1
+#define FALSE 0
 
 typedef struct
 {
@@ -15,7 +17,8 @@ typedef struct
     int isEmpty;
 } eEmpleado;
 
-typedef struct{
+typedef struct
+{
     int id;
     char descripcion[20];
 }eSector;
@@ -32,7 +35,7 @@ typedef struct
  * \return void
  *
  */
-void empeladoMenu();
+void empleadoMenu(eEmpleado listaEmpleados[], int len);
 
 /** \brief Inicializa todas las posiciones del array poniendolas en 0
  *
@@ -41,7 +44,7 @@ void empeladoMenu();
  * \return void
  *
  */
-void inicializarEmpleados( eEmpleado x[], int tam);
+void inicializarEmpleados( eEmpleado listaEmpelados[], int tam);
 
 /** \brief Busca posiciones libres en el array de empleado
  *
@@ -50,7 +53,7 @@ void inicializarEmpleados( eEmpleado x[], int tam);
  * \return int
  *
  */
-int buscarLibre( eEmpleado x[], int tam);
+int buscarLibre( eEmpleado listaEmpleados[], int tam);
 
 /** \brief Busca un empleado y devuelve la posicion en el indice
  *
@@ -60,7 +63,7 @@ int buscarLibre( eEmpleado x[], int tam);
  * \return int
  *
  */
-int buscarEmpleado(eEmpleado x[], int tam, int legajo);
+int buscarEmpleado(eEmpleado listaEmpleados[], int tam, int legajo);
 
 /** \brief Muestra un empleado
  *
@@ -136,4 +139,4 @@ int elegirSector(eSector sectores[], int tam);
  */
 void cargarDescripcion(eSector sectores[], int tamSector, int idSector, char cadena[]);
 
-#endif // EMPLEADO_H_INCLUDED
+#endif // NEGOCIO_H_INCLUDED

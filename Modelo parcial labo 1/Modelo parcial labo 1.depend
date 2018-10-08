@@ -1,27 +1,32 @@
 # depslib dependency file v1.0
-1538569439 source:d:\brizuela.adrian\programacion_1_laboratorio_1-master\modelo parcial labo 1\almuerzo.c
-
-1538569456 source:d:\brizuela.adrian\programacion_1_laboratorio_1-master\modelo parcial labo 1\comida.c
-
-1538580473 source:d:\brizuela.adrian\programacion_1_laboratorio_1-master\modelo parcial labo 1\empleado.c
+1538969872 source:e:\utn\primer cuatrimestre\programacion_1_laboratorio_1-master\modelo parcial labo 1\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
-	"empleado.h"
-
-1538568715 source:d:\brizuela.adrian\programacion_1_laboratorio_1-master\modelo parcial labo 1\utn.c
-
-1538577425 source:d:\brizuela.adrian\programacion_1_laboratorio_1-master\modelo parcial labo 1\main.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	"empleado.h"
+	"negocio.h"
 	"comida.h"
-	"almuerzo.h"
+	"menuPrincipal.h"
 
-1538578121 d:\brizuela.adrian\programacion_1_laboratorio_1-master\modelo parcial labo 1\empleado.h
+1538969753 e:\utn\primer cuatrimestre\programacion_1_laboratorio_1-master\modelo parcial labo 1\negocio.h
 
-1538572557 d:\brizuela.adrian\programacion_1_laboratorio_1-master\modelo parcial labo 1\comida.h
+1538964195 e:\utn\primer cuatrimestre\programacion_1_laboratorio_1-master\modelo parcial labo 1\menuprincipal.h
 
-1538572719 d:\brizuela.adrian\programacion_1_laboratorio_1-master\modelo parcial labo 1\almuerzo.h
+1538950026 source:e:\utn\primer cuatrimestre\programacion_1_laboratorio_1-master\modelo parcial labo 1\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+
+1538969763 source:e:\utn\primer cuatrimestre\programacion_1_laboratorio_1-master\modelo parcial labo 1\negocio.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"negocio.h"
+	"comida.h"
+	"menuPrincipal.h"
+	"utn.h"
+
+1538949561 e:\utn\primer cuatrimestre\programacion_1_laboratorio_1-master\modelo parcial labo 1\utn.h
+
+1538969206 e:\utn\primer cuatrimestre\programacion_1_laboratorio_1-master\modelo parcial labo 1\comida.h
 
