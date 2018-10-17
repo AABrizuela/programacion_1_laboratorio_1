@@ -1,0 +1,123 @@
+Punteros
+
+Son variables que en lugar de guardar tipo de datos lo que guarda son direcciones de memoria.
+
+Un puntero no es mas que una variable pero guarda una direccion de memoria, y en la direccion de memoria
+se va a encontrar con uno de los tipos de datos.
+
+Si nosotros decimos:
+
+"int *ptr;"
+"int* prt;"
+
+Quiere decir que la variable es un puntero, por el asterisco declarado con la variable, o en el tipo de dato.
+
+Se puede decir que a la variable puntero se le asigna un "ptr = &nro;" se le esta asignando la direccion de memoria.
+
+Incorrecto es hacer esto "ptr = nro;" porque un puntero espera una direccion de memoria.
+
+Se puede observa como se comporta en la memoria:
+
+            DIR             DATO
+nro=5 ->    0x100           5
+ptr=&nro -> 0x104           0x100
+
+'&' es el operador de direccion y '*' es el operacion de indireccion
+
+Significa que el puntero guarda una direccion la cual indirectamente puede cambiar datos en otras variables.
+
+Si yo hago "*ptr = 15;" el 15 se va a asignar a la direccion donde apunta el puntero.
+
+            DIR             DATO
+nro=5 ->    0x100           5
+ptr=&nro -> 0x104           0x100
+nro2=7 ->   0x108           7. En vez de tener 7, cambia a 13.
+ptr2=13 ->  0x112           0x108
+
+Si yo hago:
+
+printf("%d", nro); <- va a mostrar 13.
+
+printf("%d", *ptr); <- tambien va a mostrar 13 porque me muestra el dato contenido en esa direccion de memoria.
+
+Si quiero ver la direccion de memoria donde esta guardado el dato puedo usar:
+
+printf("%p", *ptr);
+
+El puntero se declara con el mismo tipo de dato de la variable a la que apunta.
+
+----------------------------------
+
+int *a, b, c;
+
+b = 15;
+a = &b;
+c = *a;
+
+Seria:
+
+        DIR         DATO
+a->     0x100       0x104
+b->     0x104       15
+c->     0x108       15
+
+Una cosa es la direccion de memoria de la variable (&a = 0x100)
+y otra cosa es la direccion de memoria de la variable a la que apunta (*a = 0x104).
+
+-----------------------------------
+
+Puedo hacer comparaciones:
+
+if(ptrA == ptrB); <- comparo puntero con puntero.
+
+if(ptr != NULL); <- comparo puntero con macro NULL.
+
+if(ptr > &nro); <- comparo puntero con direccion de memoria.
+
+if(ptr == 0xAAFF);<- comparo puntero con direccion de memoria de la variable.
+
+Un archivo es un puntero del tipo 'file'.
+Si tengo exito me va a devolver una direccion de memoria, si no, devuelve NULL.
+
+----------------------------------
+
+Existe el operador 'sizeof'
+
+sizeof(int); <- es un valor entero 4
+
+sizeof(char); <- es un valor entero 1
+
+Devuelve la cantidad de memoria que ocupa el tipo de dato.
+
+int *p;
+p++;
+p++;
+
+0x100 + 0 . sizeof(int) /   0x100 + 1 . sizeof(int)
+0x100 + 0 = 0x100      /    0x100 + 4 = 0x104
+                            -----------------------
+                            0x100 + 3 . sizeof(int)
+                            0x100 + 8 = 0x108
+
+-----------------------------------
+
+int vec[5], *p;
+
+p = vec;
+
+for(i=0, i<5, i++){
+    vec[i] = i+3;
+}
+
+for(i=0, i<5, i++){
+    *(p+i) = i+5;
+}
+
+*(p+i) significa la direccion de memoria de 'p' y le sumo un entero
+
+-----------------------------------
+
+Si declaro el puntero como 'void' deja de depender del tipo de dato y puedo usar el mismo puntero para diferentes tipos.
+
+
+
