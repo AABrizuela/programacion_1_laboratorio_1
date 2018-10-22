@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1540213004 source:d:\brizuela.adrian\programacion_1_laboratorio_1-master\clase_16\clase_16_ej1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"pendrive.h"
+
+1540212936 d:\brizuela.adrian\programacion_1_laboratorio_1-master\clase_16\clase_16_ej1\pendrive.h
+
