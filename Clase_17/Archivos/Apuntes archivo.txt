@@ -1,0 +1,41 @@
+Los archivos solo manejan datos en texto (char) y binario. No maneja numeros.
+
+Si trabajo con binario y trato de traer un numero, va a ser ilegible.
+
+23 texto, al ser dato char, ocupa 2 bytes.
+23 binario, al ser dato entero, ocupa 4 bytes.
+
+Para no perder los datos se tiene que guardar todo en un archivo de texto.
+La manera de manipular los datos va a ser a traves de archivo binario.
+
+Existen 2 maneras de trabajar archivos, una es con buffer y otra es manejando directamente el archivo.
+(Nosotros vamos a manejar buffer)
+
+Un archivo es un puntero que apunta a un tipo de dato FILE.
+
+Existen 2 funciones para leer y escribir. Una es fwrite y la otra es fread.
+
+El puntero a FILE es el nexo entre disco y memoria.
+
+Si el archivo no se puede abrir con la funcion fopen, devuelve NULL.
+
+Cada vez que trabajo con archivos tengo que preguntar por NULL.
+
+Se pueden abrir varios archivos al mismo tiempo siempre y cuando exista por lo menos
+un puntero a FILE para cada uno.
+
+La cantidad de archivos que se pueden abrir al mismo tiempo depende del sistema
+operativo.
+
+No se debe modificar el valor del puntero devuelto por 'fopen()'.
+
+Para cerrar el archivo se usa la funcion 'fclose()'.
+
+Antes de un 'fwrite()' siempre hay que limpiar el buffer con fflush(sdin).
+
+Funcion 'feof()' se usa para ver si se llego al final del archivo.
+
+Funcion 'rewind()' rebovina el archivo.
+
+Funcion 'fseek()' indica la posicion indicada en el archivo.
+
