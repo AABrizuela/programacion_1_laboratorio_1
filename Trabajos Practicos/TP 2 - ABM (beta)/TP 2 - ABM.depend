@@ -1,0 +1,65 @@
+# depslib dependency file v1.0
+1538336838 source:e:\utn\primer cuatrimestre\programacion_1_laboratorio_1-master\trabajos practicos\tp 2 - abm\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"ArrayEmployees.h"
+
+1538336470 e:\utn\primer cuatrimestre\programacion_1_laboratorio_1-master\trabajos practicos\tp 2 - abm\arrayemployees.h
+
+1538336185 source:e:\utn\primer cuatrimestre\programacion_1_laboratorio_1-master\trabajos practicos\tp 2 - abm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"ArrayEmployees.h"
+
+1538399962 source:d:\brizuela.adrian\programacion_1_laboratorio_1-master\trabajos practicos\tp_laboratorio_1-master\tp 2 - abm\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"ArrayEmployees.h"
+
+1538399381 d:\brizuela.adrian\programacion_1_laboratorio_1-master\trabajos practicos\tp_laboratorio_1-master\tp 2 - abm\arrayemployees.h
+
+1538359014 source:d:\brizuela.adrian\programacion_1_laboratorio_1-master\trabajos practicos\tp_laboratorio_1-master\tp 2 - abm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"ArrayEmployees.h"
+
+1538445765 source:c:\users\ezequiel\downloads\tp_laboratorio_1-master\tp 2 - abm\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"ArrayEmployees.h"
+
+1538446354 c:\users\ezequiel\downloads\tp_laboratorio_1-master\tp 2 - abm\arrayemployees.h
+
+1538446091 source:c:\users\ezequiel\downloads\tp_laboratorio_1-master\tp 2 - abm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"ArrayEmployees.h"
+
+1538446461 source:e:\utn\tp 2 - abm\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"ArrayEmployees.h"
+
+1538446354 e:\utn\tp 2 - abm\arrayemployees.h
+
+1538446091 source:e:\utn\tp 2 - abm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"ArrayEmployees.h"
+
