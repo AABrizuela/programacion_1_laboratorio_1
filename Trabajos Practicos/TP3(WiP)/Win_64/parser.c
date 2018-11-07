@@ -12,7 +12,11 @@
  */
 int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 {
-
+    do
+    {
+        //employee_newParametros(idStr, nombreStr, horasTrabajadasStr);
+        //ll_add(pArrayListEmployee, /*ptr*/);
+    }while(!feof(pFile));
     return 1;
 }
 
