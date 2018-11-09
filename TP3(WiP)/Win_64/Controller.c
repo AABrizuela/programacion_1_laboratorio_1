@@ -22,6 +22,7 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
         if(pFile != NULL){
             retorno = parser_EmployeeFromText(pFile , pArrayListEmployee);
         }
+	fclose(pFile);
     }
 
 
@@ -121,6 +122,9 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 {
+	if (pArrayListEmployee->size == 0){
+		//OIGA!, La lista esta vacia! no podemos guardar "nada".
+	}
     return 1;
 }
 
